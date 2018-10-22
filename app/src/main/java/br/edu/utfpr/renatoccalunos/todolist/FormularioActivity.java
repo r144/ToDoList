@@ -1,8 +1,9 @@
 package br.edu.utfpr.renatoccalunos.todolist;
 
-import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -68,20 +69,48 @@ public class FormularioActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_formulario_ok:
-                Tarefa tarefa = helper.pegaTarefa();
-                Toast.makeText(FormularioActivity.this, "Tarefa " + tarefa.getNome() + " Criada!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, listaTarefasActivity.class);
-                    tarefas = Remind.getInstance().getTarefas();
-                if (idTarefaEdit != -1) {
-                    tarefas.remove(idTarefaEdit);
-                }
-                tarefas.add(tarefa);
-                finish();
+                salvar();
                 break;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    private void salvar() {
+        Tarefa tarefa = helper.pegaTarefa();
 
+        if (validaCampos(tarefa)) {
+            Toast.makeText(FormularioActivity.this, "Tarefa " + tarefa.getNome() + " Criada!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, listaTarefasActivity.class);
+            tarefas = Remind.getInstance().getTarefas();
+            if (idTarefaEdit != -1) {
+                tarefas.remove(idTarefaEdit);
+            }
+            tarefas.add(tarefa);
+            finish();
+        } else {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            builder.setTitle("Erro");
+            builder.setIcon(android.R.drawable.ic_dialog_alert);
+            builder.setMessage("Preencha os dados corretamente");
+
+            builder.setNeutralButton(R.string.ok,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+
+    }
+
+    private boolean validaCampos(Tarefa tarefa) {
+        return !tarefa.getNome().equals("") && !tarefa.getProjeto().equals("") && !tarefa.getDescricao().equals("");
+    }
 }
