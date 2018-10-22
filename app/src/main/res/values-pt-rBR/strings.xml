@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sobre"><b>Sobre</b></string>
+    <string name="projeto">Projeto</string>
+    <string name="nome_da_tarefa">Nome da Tarefa</string>
+    <string name="descricao">Descrição</string>
+    <string name="texto_sobre"><b>ToDoList</b> é um sistema de listas para controle de projetos pessoais. Nela você cria um projeto, e correlaciona tarefas a este projeto, planejando passo a passo tudo o que precisa ser desenvolvido para completar o projeto, tornando sua execução mais simples e organizada.</string>
+    <string name="feito_por"><b>Feito por</b>: Renato Barbosa Cândido</string>
+    <string name="utfpr"><b>UTFPR</b> - Universidade Tecnológica Federal do Paraná</string>
+    <string name="nivel_prioridade">Nível de Prioridade</string>
+    <string name="version"> <b>Versão</b> - 1.0.0</string>
+    <string name="switch_ajuda">Ajuda</string>
+    <string name="settings">Preferências</string>
+    <string name="help_task">insert a help task on start</string>
+
+</resources>

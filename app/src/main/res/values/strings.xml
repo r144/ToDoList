@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name" translatable="false">ToDoList</string>
+    <string name="ok" translatable="false">Ok</string>
+    <string name="sobre"><b>About</b></string>
+    <string name="projeto">Project</string>
+    <string name="nome_da_tarefa">Task Name</string>
+    <string name="descricao">Description</string>
+    <string name="texto_sobre"><b>ToDoList</b> is a list system for personal project control. In this you can create a project, and correlate tasks to this, planning step by step <b>everything </b>that needs to be developed to complete the project, making the execution simpler and more organized.</string>
+    <string name="feito_por"><b>Made by</b>: Renato Barbosa Candido</string>
+    <string name="utfpr"><b>UTFPR</b> - Universidade Tecnológica Federal do Paraná</string>
+    <string name="plus" translatable="false">+</string>
+    <string name="nivel_prioridade">Priority Level</string>
+    <string name="version"><b>Version </b>- 1.0.0</string>
+    <string name="switch_ajuda">Help</string>
+    <string name="settings">Settings</string>
+    <string name="help_task">insert a help task on start</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="br.edu.utfpr.renatoccalunos.todolist.FormularioActivity">
+
+    <item
+        android:id="@+id/menu_formulario_ok"
+        android:icon="@drawable/ic_confirmar"
+        android:title="@string/ok"
+        app:showAsAction="always" />
+
+</menu>
