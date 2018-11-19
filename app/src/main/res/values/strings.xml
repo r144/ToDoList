@@ -17,4 +17,6 @@
     <string name="title_activity_projeto">ProjetoActivity</string>
     <string name="project_name">Project name</string>
     <string name="description">Description</string>
+    <string name="projetos">Projects</string>
+    <string name="title_activity_lista_projetos">listaProjetosActivity</string>
 </resources>

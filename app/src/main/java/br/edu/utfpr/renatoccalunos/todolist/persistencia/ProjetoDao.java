@@ -15,9 +15,6 @@ public interface ProjetoDao {
     @Query("SELECT * from projeto")
     List<Projeto> getAll();
 
-    @Query("SELECT projeto.nome from projeto")
-    List<String> getAllNames();
-
     @Query( "SELECT * FROM  projeto where nome LIKE :nome")
     Projeto findByName(String nome);
 

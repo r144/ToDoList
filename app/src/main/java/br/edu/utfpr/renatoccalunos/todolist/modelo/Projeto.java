@@ -8,7 +8,7 @@ import android.arch.persistence.room.PrimaryKey;
 public class Projeto {
 
     @PrimaryKey(autoGenerate = true)
-    private long id;
+    private int id;
 
     @ColumnInfo(name = "nome")
     private String nome;
@@ -16,11 +16,11 @@ public class Projeto {
     @ColumnInfo(name = "descricao")
     private String descricao;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -40,4 +40,9 @@ public class Projeto {
         this.descricao = descricao;
     }
 
+    @Override
+    public String toString() {
+
+        return getNome();
+    }
 }

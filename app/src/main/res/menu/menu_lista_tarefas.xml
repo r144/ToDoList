@@ -4,6 +4,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/menu_lista_projeto"
+        android:title="@string/projetos" />
+    <item
         android:id="@+id/menu_lista_sobre"
         android:title="@string/sobre" />
     <item

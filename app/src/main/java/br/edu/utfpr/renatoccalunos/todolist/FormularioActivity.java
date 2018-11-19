@@ -20,6 +20,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.utfpr.renatoccalunos.todolist.modelo.Projeto;
 import br.edu.utfpr.renatoccalunos.todolist.modelo.Remind;
 import br.edu.utfpr.renatoccalunos.todolist.modelo.Tarefa;
 import br.edu.utfpr.renatoccalunos.todolist.persistencia.ProjetoDatabase;
@@ -34,7 +35,9 @@ public class FormularioActivity extends AppCompatActivity {
     //    private ArrayList<Tarefa> taskList;
     private int idTarefaEdit = -1;
     private Tarefa tarefa;
-    Spinner campoProjeto;
+    private Spinner campoProjeto;
+    private ProjetoDatabase database;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,8 @@ public class FormularioActivity extends AppCompatActivity {
         helper = new FormularioHelper(this);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
+        campoProjeto = this.findViewById(R.id.formulario_projeto);
+        database = ProjetoDatabase.getDatabase(this);
 
         Button buttonNovoProjeto = (Button) findViewById(R.id.novo_projeto);
         buttonNovoProjeto.setOnClickListener(new View.OnClickListener() {
@@ -55,28 +60,15 @@ public class FormularioActivity extends AppCompatActivity {
         });
         if (bundle != null) {
             EditText campoNome = this.findViewById(R.id.formulario_nome);
-            campoProjeto = this.findViewById(R.id.formulario_projeto);
             EditText campoDescricao = this.findViewById(R.id.formulario_descricao);
             RatingBar campoPrioridade = this.findViewById(R.id.formulario_ratingBar);
-            campoProjeto.setOnItemSelectedListener(
-                    new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
-
             idTarefaEdit = bundle.getInt("pos");
 
             Tarefa t = Remind.getInstance().getTarefas().get(idTarefaEdit);
 
             campoNome.setText(t.getNome());
             campoDescricao.setText(t.getDescricao());
+            campoProjeto.setSelection(t.getProjetoId());
             campoPrioridade.setProgress(t.getPrioridade());
 
 
@@ -85,17 +77,16 @@ public class FormularioActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        ProjetoDatabase database = ProjetoDatabase.getDatabase(this);
-        List<String> list = database.projetoDao().getAllNames();
+
+        List<Projeto> list = database.projetoDao().getAll();
         populaSpinner(list);
     }
 
-    private void populaSpinner(List<String> list) {
-        ArrayAdapter<String> adapter = new
-                ArrayAdapter<String>(this,
+    private void populaSpinner(List<Projeto> list) {
+        ArrayAdapter<Projeto> adapter = new
+                ArrayAdapter<Projeto>(this,
                 android.R.layout.simple_spinner_item,
                 list);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         campoProjeto.setAdapter(adapter);
     }
     @Override
@@ -161,6 +152,6 @@ public class FormularioActivity extends AppCompatActivity {
     }
 
     private boolean validaCampos(Tarefa tarefa) {
-        return !tarefa.getNome().equals("") && !tarefa.getProjeto().equals("") && !tarefa.getDescricao().equals("");
+        return !tarefa.getNome().equals("") && tarefa.getProjetoId() >= 0 && !tarefa.getDescricao().equals("");
     }
 }

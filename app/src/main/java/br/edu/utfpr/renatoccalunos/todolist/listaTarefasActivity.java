@@ -132,12 +132,17 @@ public class listaTarefasActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.menu_lista_projeto:
+                Intent intentVaiPraProjetos = new Intent(listaTarefasActivity.this, listaProjetosActivity.class);
+                startActivity(intentVaiPraProjetos);
+                break;
             case R.id.menu_lista_sobre:
                 Intent intentVaiPraSobre = new Intent(listaTarefasActivity.this, SobreActivity.class);
                 startActivity(intentVaiPraSobre);
                 break;
             case R.id.menu_switch_help:
                 switchHelp = !switchHelp;
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

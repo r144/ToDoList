@@ -4,6 +4,8 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+import br.edu.utfpr.renatoccalunos.todolist.persistencia.ProjetoDao;
+
 @Entity(tableName = "tarefa")
 public class Tarefa {
 
@@ -16,8 +18,8 @@ public class Tarefa {
     @ColumnInfo(name = "descricao")
     private String descricao;
 
-    @ColumnInfo(name = "projeto")
-    private String projeto;
+    @ColumnInfo(name = "projetoId")
+    private int projetoId;
 
     @ColumnInfo(name = "prioridade")
     private int prioridade;
@@ -54,12 +56,12 @@ public class Tarefa {
         this.descricao = descricao;
     }
 
-    public String getProjeto() {
-        return projeto;
+    public int getProjetoId() {
+        return projetoId;
     }
 
-    public void setProjeto(String projeto) {
-        this.projeto = projeto;
+    public void setProjetoId(int projetoId) {
+        this.projetoId = projetoId;
     }
 
     public int getPrioridade() {

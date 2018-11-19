@@ -16,11 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FormularioActivity"></activity>
-        <activity android:name=".SobreActivity"></activity>
+        <activity android:name=".FormularioActivity" />
+        <activity android:name=".SobreActivity" />
         <activity
             android:name=".ProjetoActivity"
-            android:label="@string/title_activity_projeto"></activity>
+            android:label="@string/title_activity_projeto" />
+        <activity
+            android:name=".listaProjetosActivity"
+            android:label="@string/title_activity_lista_projetos"></activity>
     </application>
 
 </manifest>
