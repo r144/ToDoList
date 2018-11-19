@@ -1,8 +1,5 @@
 package br.edu.utfpr.renatoccalunos.todolist.modelo;
 
-import java.util.Random;
-import java.util.UUID;
-
 public class Helper {
     private static Helper instancia;
     private static int id = 0;

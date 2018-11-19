@@ -1,20 +1,34 @@
 package br.edu.utfpr.renatoccalunos.todolist.modelo;
 
-import java.io.Serializable;
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 
-public class Tarefa implements Serializable {
+@Entity(tableName = "tarefa")
+public class Tarefa {
+
+    @PrimaryKey(autoGenerate = true)
     private long id;
+
+    @ColumnInfo(name = "nome")
     private String nome;
+
+    @ColumnInfo(name = "descricao")
     private String descricao;
+
+    @ColumnInfo(name = "projeto")
     private String projeto;
+
+    @ColumnInfo(name = "prioridade")
     private int prioridade;
+
+    @ColumnInfo(name = "checked")
     private Boolean checked = false;
 
     public Tarefa() {
         Helper helper = Helper.SingletoonHelper();
         this.id = Helper.getId();
     }
-
     public long getId() {
         return id;
     }
