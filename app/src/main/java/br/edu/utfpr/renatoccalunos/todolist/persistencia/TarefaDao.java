@@ -1,9 +1,10 @@
-package br.edu.utfpr.renatoccalunos.todolist.dao;
+package br.edu.utfpr.renatoccalunos.todolist.persistencia;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
 import java.util.List;
 
@@ -26,4 +27,7 @@ public interface TarefaDao {
 
     @Delete
     void delete(Tarefa tarefa);
+
+    @Update
+    void update(Tarefa tarefa);
 }

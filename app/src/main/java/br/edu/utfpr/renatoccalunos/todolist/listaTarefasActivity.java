@@ -16,18 +16,21 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import br.edu.utfpr.renatoccalunos.todolist.modelo.Remind;
 import br.edu.utfpr.renatoccalunos.todolist.modelo.Tarefa;
+import br.edu.utfpr.renatoccalunos.todolist.persistencia.TarefaDatabase;
 
 public class listaTarefasActivity extends AppCompatActivity {
     public static final int PEDIRTAREFA = 1;
-    private ArrayList<Tarefa> tarefas;
+//    private ArrayList<Tarefa> tarefas;
     private ListView listaTarefas;
     private boolean switchHelp = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final TarefaDatabase database = TarefaDatabase.getDatabase(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_tarefas);
         listaTarefas = (ListView) findViewById(R.id.listaTarefas);
@@ -36,18 +39,19 @@ public class listaTarefasActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Tarefa t = (Tarefa) listaTarefas.getItemAtPosition(position);
                 t.setChecked(!t.getChecked());
+                database.tarefaDao().update(t);
                 listaTarefas.setItemChecked(position, t.getChecked());
             }
         });
-        if(!getOption()){
-            Tarefa tarefaHelp = new Tarefa();
-            tarefaHelp.setNome("Tarefa Exemplo");
-            tarefaHelp.setDescricao("descrição de obsservações desta tarefa");
-            tarefaHelp.setProjeto("Projeto que relaciona esta tarefa");
-            tarefaHelp.setPrioridade(5);
-            tarefas.add(tarefaHelp);
-        }
-        tarefas = Remind.getInstance().getTarefas();
+//        if(!getOption()){
+//            Tarefa tarefaHelp = new Tarefa();
+//            tarefaHelp.setNome("Tarefa Exemplo");
+//            tarefaHelp.setDescricao("descrição de obsservações desta tarefa");
+//            tarefaHelp.setProjeto("Projeto que relaciona esta tarefa");
+//            tarefaHelp.setPrioridade(5);
+//            tarefas.add(tarefaHelp);
+//        }
+//        tarefas = Remind.getInstance().getTarefas();
 
         Button buttonNovaTarefa = (Button) findViewById(R.id.nova_tarefa);
         buttonNovaTarefa.setOnClickListener(new View.OnClickListener() {
@@ -63,15 +67,23 @@ public class listaTarefasActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        carregaLista(tarefas);
+        carregaLista();
 
     }
 
-    private void carregaLista(ArrayList<Tarefa> list) {
+    private void carregaLista() {
+        TarefaDatabase database = TarefaDatabase.getDatabase(this);
 
-        ArrayAdapter<Tarefa> adapter = new ArrayAdapter<Tarefa>(this, android.R.layout.simple_list_item_multiple_choice, list);
+        List<Tarefa> list = database.tarefaDao().getAll();
+        ArrayAdapter<Tarefa> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_multiple_choice, list);
         listaTarefas.setAdapter(adapter);
         listaTarefas.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
+        for(int i=0;i < list.size();i++){
+            listaTarefas.setItemChecked(i, list.get(i).getChecked());
+        }
+
+
     }
 
     @Override
@@ -84,8 +96,14 @@ public class listaTarefasActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
                 Tarefa tarefa = (Tarefa) listaTarefas.getItemAtPosition(info.position);
-                tarefas.remove(tarefa);
-                carregaLista(tarefas);
+
+                TarefaDatabase database =
+                        TarefaDatabase.getDatabase(listaTarefasActivity.this);
+
+                database.tarefaDao().delete(tarefa);
+                List<Tarefa> tasks = database.tarefaDao().getAll();
+//                tarefas.remove(tarefa);
+                carregaLista();
                 return false;
             }
 

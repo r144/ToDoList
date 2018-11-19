@@ -9,19 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".listaTarefasActivity">
+        <activity android:name=".listaTarefasActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".FormularioActivity"></activity>
+        <activity android:name=".SobreActivity"></activity>
         <activity
-            android:name=".FormularioActivity">
-        </activity>
-        <activity
-            android:name=".SobreActivity">
-        </activity>
+            android:name=".ProjetoActivity"
+            android:label="@string/title_activity_projeto"></activity>
     </application>
 
 </manifest>
