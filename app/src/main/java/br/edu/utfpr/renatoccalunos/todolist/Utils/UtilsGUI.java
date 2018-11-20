@@ -1,9 +1,11 @@
-package br.edu.utfpr.renatoccalunos.todolist;
+package br.edu.utfpr.renatoccalunos.todolist.Utils;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.widget.EditText;
+
+import br.edu.utfpr.renatoccalunos.todolist.R;
 
 public class UtilsGUI {
 

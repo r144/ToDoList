@@ -1,4 +1,4 @@
-package br.edu.utfpr.renatoccalunos.todolist;
+package br.edu.utfpr.renatoccalunos.todolist.Utils;
 
 public class UtilsString {
 

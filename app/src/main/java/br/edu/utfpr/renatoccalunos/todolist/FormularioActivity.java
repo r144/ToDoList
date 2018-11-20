@@ -16,9 +16,9 @@ import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.Iterator;
 import java.util.List;
 
+import br.edu.utfpr.renatoccalunos.todolist.Utils.FormularioHelper;
 import br.edu.utfpr.renatoccalunos.todolist.modelo.Projeto;
 import br.edu.utfpr.renatoccalunos.todolist.modelo.Tarefa;
 import br.edu.utfpr.renatoccalunos.todolist.persistencia.ToDoListDatabase;

@@ -1,7 +1,9 @@
-package br.edu.utfpr.renatoccalunos.todolist;
+package br.edu.utfpr.renatoccalunos.todolist.Utils;
 
 import android.widget.EditText;
 
+import br.edu.utfpr.renatoccalunos.todolist.ProjetoActivity;
+import br.edu.utfpr.renatoccalunos.todolist.R;
 import br.edu.utfpr.renatoccalunos.todolist.modelo.Projeto;
 
 public class ProjetoHelper {

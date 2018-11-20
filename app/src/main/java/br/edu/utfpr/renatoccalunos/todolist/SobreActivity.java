@@ -1,15 +1,9 @@
 package br.edu.utfpr.renatoccalunos.todolist;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.Toast;
 
-import br.edu.utfpr.renatoccalunos.todolist.modelo.Tarefa;
+import br.edu.utfpr.renatoccalunos.todolist.Utils.FormularioHelper;
 
 public class SobreActivity extends AppCompatActivity {
 

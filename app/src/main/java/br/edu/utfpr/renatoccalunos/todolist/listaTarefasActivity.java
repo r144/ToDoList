@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import br.edu.utfpr.renatoccalunos.todolist.Utils.UtilsGUI;
 import br.edu.utfpr.renatoccalunos.todolist.modelo.Tarefa;
 import br.edu.utfpr.renatoccalunos.todolist.persistencia.ToDoListDatabase;
 

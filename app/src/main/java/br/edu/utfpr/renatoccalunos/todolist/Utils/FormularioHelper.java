@@ -1,9 +1,11 @@
-package br.edu.utfpr.renatoccalunos.todolist;
+package br.edu.utfpr.renatoccalunos.todolist.Utils;
 
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 
+import br.edu.utfpr.renatoccalunos.todolist.FormularioActivity;
+import br.edu.utfpr.renatoccalunos.todolist.R;
 import br.edu.utfpr.renatoccalunos.todolist.modelo.Helper;
 import br.edu.utfpr.renatoccalunos.todolist.modelo.Projeto;
 import br.edu.utfpr.renatoccalunos.todolist.modelo.Tarefa;
