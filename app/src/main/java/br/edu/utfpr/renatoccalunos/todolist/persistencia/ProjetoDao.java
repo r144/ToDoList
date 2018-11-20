@@ -4,6 +4,7 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
 import java.util.List;
 
@@ -18,6 +19,9 @@ public interface ProjetoDao {
     @Query( "SELECT * FROM  projeto where nome LIKE :nome")
     Projeto findByName(String nome);
 
+    @Query( "SELECT * FROM  projeto where id = :id LIMIT 1")
+    Projeto findById(long id);
+
     @Query("SELECT COUNT(*) from projeto")
     int countUsers();
 
@@ -26,5 +30,8 @@ public interface ProjetoDao {
 
     @Delete
     void delete(Projeto projeto);
+
+    @Update
+    void update(Projeto projeto);
 }
 

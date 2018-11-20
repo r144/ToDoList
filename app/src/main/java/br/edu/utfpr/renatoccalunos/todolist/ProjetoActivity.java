@@ -1,24 +1,18 @@
 package br.edu.utfpr.renatoccalunos.todolist;
 
 import android.app.AlertDialog;
-import android.arch.persistence.room.Database;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import br.edu.utfpr.renatoccalunos.todolist.modelo.Projeto;
-import br.edu.utfpr.renatoccalunos.todolist.persistencia.ProjetoDatabase;
+import br.edu.utfpr.renatoccalunos.todolist.persistencia.ToDoListDatabase;
 
 public class ProjetoActivity extends AppCompatActivity {
 
@@ -73,7 +67,7 @@ public class ProjetoActivity extends AppCompatActivity {
 //                taskList.remove(idTarefaEdit);
             }
 
-            ProjetoDatabase database = ProjetoDatabase.getDatabase(this);
+            ToDoListDatabase database = ToDoListDatabase.getDatabase(this);
             database.projetoDao().insertAll(projeto);
 //            taskList.add(tarefa);
             finish();

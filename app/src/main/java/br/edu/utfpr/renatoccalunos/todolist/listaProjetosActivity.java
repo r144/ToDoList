@@ -15,12 +15,13 @@ import android.widget.ListView;
 import java.util.List;
 
 import br.edu.utfpr.renatoccalunos.todolist.modelo.Projeto;
-import br.edu.utfpr.renatoccalunos.todolist.persistencia.ProjetoDatabase;
+import br.edu.utfpr.renatoccalunos.todolist.persistencia.ToDoListDatabase;
 
 public class listaProjetosActivity extends AppCompatActivity {
     private ListView listaProjetos;
     private ActionMode actionMode;
     private int pos = -1;
+    private ToDoListDatabase database = ToDoListDatabase.getDatabase(this);
     private ActionMode.Callback actionCb = new ActionMode.Callback() {
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
@@ -38,11 +39,11 @@ public class listaProjetosActivity extends AppCompatActivity {
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.menu_projeto_edit:
-//                    edit();
+                    edit();
                     mode.finish();
                     return true;
                 case R.id.menu_projeto_delete:
-//                    delete();
+                    delete();
                     mode.finish();
                     return true;
                 default:
@@ -79,9 +80,18 @@ public class listaProjetosActivity extends AppCompatActivity {
                 });
     }
 
-    private void carregaLista() {
-        ProjetoDatabase database = ProjetoDatabase.getDatabase(this);
+    private void edit(){
 
+    }
+    private void delete(){
+        Projeto projeto = (Projeto) listaProjetos.getItemAtPosition(pos);
+        database.projetoDao().delete(projeto);
+        carregaLista();
+
+    }
+    private void carregaLista() {
+        ToDoListDatabase database = ToDoListDatabase.getDatabase(this);
+        listaProjetos.setAdapter(null);
         List<Projeto> list = database.projetoDao().getAll();
         ArrayAdapter<Projeto> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
         listaProjetos.setAdapter(adapter);
@@ -89,4 +99,10 @@ public class listaProjetosActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        carregaLista();
+
+    }
 }

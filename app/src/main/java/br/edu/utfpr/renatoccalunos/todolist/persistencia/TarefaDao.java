@@ -19,6 +19,9 @@ public interface TarefaDao {
     @Query( "SELECT * FROM  tarefa where nome LIKE :nome")
     Tarefa findByName(String nome);
 
+    @Query( "SELECT * FROM  tarefa where id = :id LIMIT 1")
+    Tarefa findById(long id);
+
     @Query("SELECT COUNT(*) from tarefa")
     int countUsers();
 

@@ -19,4 +19,10 @@
     <string name="description">Description</string>
     <string name="projetos">Projects</string>
     <string name="title_activity_lista_projetos">listaProjetosActivity</string>
+    <string name="delete_message">Are you sure to delete?</string>
+    <string name="tarefa">Task</string>
+    <string name="aviso">Warning</string>
+    <string name="confirmacao">Confirm</string>
+    <string name="sim">yes</string>
+    <string name="nao">no</string>
 </resources>
